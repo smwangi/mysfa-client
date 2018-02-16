@@ -24,6 +24,8 @@ import { ShowAuthedDirective } from './directives/show-authed.directive';
 import { JwtService } from './services/jwt.service';
 import { ApiService } from './services/api.service';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpTokenInterceptor } from './interceptors/http-token-interceptor';
 
 export function authHttpServiceFactory(http: Http) {
   return new AuthHttp(new AuthConfig({
@@ -57,7 +59,8 @@ export function authHttpServiceFactory(http: Http) {
     //NgbModule.forRoot()
   ],
   providers: [
-    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
+    //{provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
+    {provide: HTTP_INTERCEPTORS,useClass:HttpTokenInterceptor,multi:true},
     AuthenticationService,
     UserService,
     AuthGuard,

@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
     credentials.grant_type = TOKEN_GRANT_TYPE;
 
     let params = new URLSearchParams();
-    params.append('username','user');
-    params.append('password','password');
+    params.append('username',credentials.username);
+    params.append('password',credentials.password);
     params.append('grant_type',TOKEN_GRANT_TYPE);
 
     let headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8', 'Authorization': 'Basic '+btoa(TOKEN_CLIENT_ID+":"+TOKEN_CLIENT_SECRET)});
