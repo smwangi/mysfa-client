@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   declarations: []
 })
 export class VisitmodeModule { 
-  id:number,
-  name:string,
-  description:string
+  id:number;
+  name:string;
+  description:string;
 }

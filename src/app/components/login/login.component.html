@@ -1,0 +1,111 @@
+<!-- <div class="form-wrapper">
+  <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+      <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel"
+             required placeholder="Username"/>
+      <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+      <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
+             required placeholder="Password"/>
+      <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Sign In</button>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </form>
+</div> -->
+
+<div class="login-container">
+  <div class="flex-item">
+    <h2 class="login-h2">LOGIN</h2>
+<form [formGroup]="loginFrm" novalidate (ngSubmit)="login(loginFrm.value, loginFrm.valid)" autocomplete="off">
+  <div class="form-group">
+    
+  <input type="text" class="form-control" placeholder="Username" formControlName="username" autocomplete="new-username" >
+    <small [hidden]="loginFrm.controls.username.valid || (loginFrm.controls.username.pristine && !submitted)">
+        Username is required (minimum 5 characters).
+    </small>
+    <input type="text" style="display:none;">
+  </div>
+  <div class="form-group">
+      <input type="password" style="display:none;" autocomplete="false">      
+    <input type="password" class="form-control" placeholder="Password" formControlName="password" autocomplete="new-password" />
+    <small [hidden]="loginFrm.controls.password.valid || (loginFrm.controls.password.pristine && !submitted)">
+        Password is required (minimum 5 characters).
+    </small>
+  </div>
+  <div class="form-group">
+      <button type="submit" [disabled] = "!loginFrm.valid" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+</div>
+</div>
+
+<!-- <div class="login-container">
+  <div class="flex-item">
+    <h2 class="login-h2">LOGIN</h2>
+    <form role="form" (ngSubmit)="f.form.valid && login()" [formGroup]="loginFrm" #f="ngForm" novalidate>
+      <div class="form-group" [ngClass]="{
+        'has-danger': username.invalid && (username.dirty || username.touched),
+        'has-success': username.valid && (username.dirty || username.touched)
+   }">
+        <label>Email</label>
+        <input type="text" class="form-control" formControlName="model.username" required>
+        <div class="form-control-feedback" *ngIf="username.errors && (username.dirty || username.touched)">
+          <p *ngIf="username.errors.required">Email is required</p>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{
+            'has-danger': password.invalid && (password.dirty || password.touched),
+            'has-success': password.valid && (password.dirty || password.touched)
+      }">
+        <label>Password</label>
+        <input type="password" class="form-control" formControlName="password" required>
+        <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+          <p *ngIf="password.errors.required">Password is required</p>
+          <p *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}}
+            characters </p>
+        </div>
+      </div>
+      <a href="#">Forgot your password?</a>
+      <br>
+      <br>
+      
+      <button [disabled]="loading" class="btn btn-primary">Sign In</button>
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    </form>
+  </div>
+</div> -->
+
+<!--
+  <div class="materialContainer">
+
+
+  <div class="box">
+
+    <div class="title">LOGIN</div>
+<form name="frmLogin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <div class="input">
+      <label for="name">Username</label>
+      <input type="text" name="username" id="username" [(ngModel)]="model.username" #username="ngModel" required>
+      <span class="spin"></span>
+    </div>
+
+    <div class="input">
+      <label for="pass">Password</label>
+      <input type="password" name="password" id="password" [(ngModel)]="model.password" #password="ngModel">
+      <span class="spin"></span>
+    </div>
+
+    <div class="button login">
+      <button>
+        <span>GO</span>
+        <i class="fa fa-check"></i>
+      </button>
+    </div>
+  </form>
+  </div>
+</div>
+-->
