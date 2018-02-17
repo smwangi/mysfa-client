@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -27,7 +27,7 @@ import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './interceptors/http-token-interceptor';
 
-export function authHttpServiceFactory(http: Http) {
+/*export function authHttpServiceFactory(http: Http) {
   return new AuthHttp(new AuthConfig({
     headerPrefix: 'Bearer',
     tokenName: TOKEN_NAME,
@@ -36,7 +36,7 @@ export function authHttpServiceFactory(http: Http) {
     noTokenScheme: true,
     tokenGetter: (() => localStorage.getItem(TOKEN_NAME))
   }), http);
-}
+}*/
 
 @NgModule({
   declarations: [
@@ -55,8 +55,8 @@ export function authHttpServiceFactory(http: Http) {
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule, 
-    HttpClientModule
-    //NgbModule.forRoot()
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
   providers: [
     //{provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},

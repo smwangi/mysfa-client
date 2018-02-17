@@ -26,11 +26,11 @@ const routes: Routes = [
   {
     path:'visit-mode',
     component:VisitModeComponent,
-    canActivate: [AuthGuard, AdminAuthGuard]
+    //canActivate: [AuthGuard, AdminAuthGuard]
   },
   {
-    path:'**', redirectTo:'/home', pathMatch: 'full'
-    //component:PageNotFoundComponent
+    path:'**', //redirectTo:'/home', pathMatch: 'full'
+    component:PageNotFoundComponent
   }
 ];
 

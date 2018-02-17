@@ -10,6 +10,12 @@ export class NavBarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  buttontoggled:boolean=false;
+
+    OnClik(){
+      this.buttontoggled=!this.buttontoggled;
+    }
+
   ngOnInit() {
   }
 

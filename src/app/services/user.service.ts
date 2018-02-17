@@ -9,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
 import { JwtService } from '../services/jwt.service';
 import { ApiService } from '../services/api.service';
 import { Observable } from 'rxjs/Observable';
+import {tokenNotExpired} from 'angular2-jwt';
+import 'rxjs/add/observable/of';
+import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class UserService {
@@ -16,8 +19,8 @@ export class UserService {
   private currentUserSubject = new BehaviorSubject<User>({} as User);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
 
-  private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
-  public isAuthenticated = this.isAuthenticatedSubject.asObservable();
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false); //new ReplaySubject<boolean>(1);
+  public isUserLoggedIn = this.isAuthenticatedSubject.asObservable();
 
   jwtHelper: JwtHelper = new JwtHelper();
   accessToken: string;
@@ -47,7 +50,7 @@ export class UserService {
   setAuth(user:User){
     console.log('User object >> '+JSON.stringify(user));
     // Save JWT sent from server in localstorage
-    this.jwtService.saveToken(user.token);
+    this.jwtService.saveToken(user.access_token);
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true
@@ -86,6 +89,15 @@ export class UserService {
       this.currentUserSubject.next(user.data);
       return data.user;
     }))
+  }
+
+  isAuthenticated():Observable<boolean> {
+    let accessToken = this.jwtService.getToken();
+     if (accessToken !== undefined && tokenNotExpired(TOKEN_NAME, accessToken)) {
+      return Observable.of(true);
+    } else {
+      return Observable.of(false);
+    }
   }
 
   login(accessToken: string) {

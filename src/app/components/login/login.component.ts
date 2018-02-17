@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.userService
     .attemptAuth(params,headers)
     .subscribe(
-      data => this.router.navigate(['/']),//this.router.navigateByUrl('/'),
+      data => this.router.navigateByUrl('/home'),//this.router.navigate(['/home']),//
       err => {
         this.errors = err;
         this.isSubmitting = false;

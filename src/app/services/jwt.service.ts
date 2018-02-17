@@ -5,15 +5,15 @@ export class JwtService {
 
   constructor() { }
 
-  getToken():String {
-    return window.localStorage['jwtToken'];
+  getToken():string {
+    return window.localStorage['access_token'];//['jwtToken'];
   }
 
   saveToken(token:String){
-    window.localStorage['jwtToken'] = token;
+    window.localStorage['access_token'] = token;
   }
 
   destroyToken(){
-    window.localStorage.removeItem('jwtToken');
+    window.localStorage.removeItem('access_token');
   }
 }
