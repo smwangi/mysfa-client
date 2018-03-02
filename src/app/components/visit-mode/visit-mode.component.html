@@ -1,3 +1,24 @@
-<p>
-  visit-mode works!
-</p>
+<section class="section feature-box">
+  <!--Section heading-->
+  <h1 class="section-heading pt-3">Visit Mode Details</h1>
+
+ <!--Grid row-->
+ <div class="row features-small pt-3">
+ 
+  <table class="table">
+    <thead class="blue-grey lighten-4">
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let vm of visitmodes">
+    <td>{{vm.name}}</td>
+   <td ><button class="btn btn-danger" (click)="updateVm(vm)"> Edit </button><button class="btn btn-danger" (click)="deleteVm(vm)"> Delete </button></td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+</section>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,7 +15,6 @@ import {AuthConfig, AuthHttp} from 'angular2-jwt';
 import { Http } from '@angular/http';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
-import { AppdataService } from './services/appdata.service';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +25,11 @@ import { ApiService } from './services/api.service';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './interceptors/http-token-interceptor';
+import { VisitmodeService } from './services/visitmode.service';
+import { BaseService } from './services/base.service';
+import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FooterComponent } from './components/footer/footer.component';
 
 /*export function authHttpServiceFactory(http: Http) {
   return new AuthHttp(new AuthConfig({
@@ -47,7 +51,8 @@ import { HttpTokenInterceptor } from './interceptors/http-token-interceptor';
     HomeComponent,
     LoginComponent,
     UserComponent,
-    ShowAuthedDirective
+    ShowAuthedDirective,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +61,9 @@ import { HttpTokenInterceptor } from './interceptors/http-token-interceptor';
     HttpModule,
     AppRoutingModule, 
     HttpClientModule,
-    NgbModule.forRoot()
+    MDBBootstrapModule.forRoot()
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     //{provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
     {provide: HTTP_INTERCEPTORS,useClass:HttpTokenInterceptor,multi:true},
@@ -67,8 +73,10 @@ import { HttpTokenInterceptor } from './interceptors/http-token-interceptor';
     AdminAuthGuard,
     JwtService,
     ApiService,
-    AppdataService,
-    HttpClientModule
+    HttpClientModule,
+    VisitmodeService,
+    BaseService,
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

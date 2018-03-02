@@ -1,4 +1,4 @@
-  <nav *showAuthed="true"  class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <!-- <nav *showAuthed="true"  class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" routerLink="/home">mySFA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
            Admin
           </a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
-            <!-- <a class="dropdown-item" href="#">Add Visit Mode</a> -->
+          
             <a class="dropdown-item" routerLink="/visit-mode">View Visit Modes</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="/user">Users</a>
@@ -28,4 +28,55 @@
         </li>
       </ul>
     </div>
-  </nav> 
+  </nav>  -->
+
+<!--Navbar-->
+<mdb-navbar *showAuthed="true" SideClass="navbar navbar-expand-lg navbar-dark indigo">
+           
+    <!-- Navbar brand -->
+    <logo><a class="navbar-brand" href="#">mySFA</a></logo>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link waves-light" mdbRippleRadius>Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbRippleRadius>Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbRippleRadius>Pricing</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbRippleRadius type="button" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>
+                Admin<span class="caret"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/visit-mode">Visit Modes</a>
+                    <div class="divider dropdown-divider"></div>
+                    <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/user">Users</a>
+                    <div class="divider dropdown-divider"></div>
+                    <a class="dropdown-item waves-light" mdbRippleRadius routerLink="#">Something else here</a>
+                    <div class="divider dropdown-divider"></div>
+                    <a class="dropdown-item waves-light" mdbRippleRadius routerLink="#">Separated link</a>
+                </div>
+            </li>
+
+        </ul>
+        <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
+<!-- Main -->
+<main *showAuthed="true">
+    <div class="container" style="height:100vh;">
+        <router-outlet></router-outlet>
+    </div>
+  </main>
+            

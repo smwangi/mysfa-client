@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path:'visit-mode',
     component:VisitModeComponent,
-    //canActivate: [AuthGuard, AdminAuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path:'**', //redirectTo:'/home', pathMatch: 'full'

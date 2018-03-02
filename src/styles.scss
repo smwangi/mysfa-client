@@ -1,11 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/scss/bootstrap.scss";
+/*@import "~bootstrap/scss/bootstrap.scss";
 body {
     padding-top: 80px; 
  }
  .starter-template {
-     /*padding: 3rem 1.5rem;
-     text-align: center;*/
+ 
      display: flex;
      min-width: 100%;
- }
+ }*/
+ 
+label:after {
+    white-space: nowrap;
+    display: none!important;
+    }
+    label.active:after {
+    display: inherit!important;
+    }
+    

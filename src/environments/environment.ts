@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:8084/sfa'//'https://conduit.productionready.io/api'
+  oauth_server_url:'http://localhost:8084/sfa-oauth-server',
+  resource_url: 'http://localhost:8084/sfa-resource/api'//'https://conduit.productionready.io/api'
 };
